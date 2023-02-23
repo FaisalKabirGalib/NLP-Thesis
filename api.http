@@ -1,0 +1,7 @@
+
+### Predict with Neural Network
+GET http://127.0.0.1:5000/predict?data=আপনারা সবাই টিকা নেবেন। এটা আপনার কর্তব্য। HTTP/1.1
+
+### Predict with Naive Bayes
+
+GET http://127.0.0.1:5000/predict/nb?data=আপনারা সবাই টিকা নেবেন। এটা আপনার কর্তব্য। HTTP/1.1
