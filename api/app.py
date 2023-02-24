@@ -6,6 +6,11 @@ import sklearn
 
 
 nb = pickle.load(open('ml/naive_bayes.pkl', 'rb'))
+adab = pickle.load(open('ml/adb.pkl', 'rb'))
+gradb = pickle.load(open('ml/gradb.pkl', 'rb'))
+lr = pickle.load(open('ml/lr.pkl', 'rb'))
+rf = pickle.load(open('ml/rf.pkl', 'rb'))
+svm = pickle.load(open('ml/svm.pkl', 'rb'))
 
 
 app = Flask(__name__)
@@ -42,9 +47,18 @@ def predict():
 @app.route('/predict/nb', methods=['GET'])
 def predict_nb():
     data = request.args.get('data')
-    result = nb.predict([data])[0]
+    mnb = nb.predict([data])[0]
+    mgradb = gradb.predict([data])[0]
+    mrf = rf.predict([data])[0]
+    msvm = svm.predict([data])[0]
+    madab = adab.predict([data])[0]
+
     return jsonify({
-        'result': int(result)
+        'nb': int(mnb),
+        'gradb': int(mgradb),
+        'rf': int(mrf),
+        'svm': int(msvm),
+        'adab': int(madab),
     })
 
 
