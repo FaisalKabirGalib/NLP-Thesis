@@ -3,6 +3,7 @@ from flask import Flask, jsonify, request
 from keras.models import load_model
 import pickle
 import sklearn
+from flask_cors import CORS
 
 
 nb = pickle.load(open('ml/naive_bayes.pkl', 'rb'))
@@ -14,6 +15,7 @@ svm = pickle.load(open('ml/svm.pkl', 'rb'))
 
 
 app = Flask(__name__)
+CORS(app)
 
 # load all dnn models
 model_ffnn = load_model('dnn/nn_model/')
